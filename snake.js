@@ -72,12 +72,17 @@ function Snake(){
         return false;
     }
 
-    this.checkCollision = function(){
+    this.checkCollision = function(interval){
         for (let i = 0; i < this.tail.length; i++) {
             if (this.x === this.tail[i].x &&
               this.y === this.tail[i].y) {
               this.total = 0;
               this.tail = [];
+              clearInterval(interval)
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              ctx.font = '30px Orbitron';
+              ctx.textAlign = 'center';
+              ctx.fillText('Game Over', 250, 250)
             }
         }
     }
