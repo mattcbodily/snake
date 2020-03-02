@@ -1,7 +1,7 @@
 const canvas = document.getElementById('game-board');
 const ctx = canvas.getContext('2d');
 
-const scale = 10;
+const scale = 20;
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 let snake;
@@ -20,7 +20,9 @@ let snake;
         if(snake.eat(fruit)){
             fruit.spawn();
         }
-      }, 1000 / 6);
+
+        snake.checkCollision();
+      }, 1000 / 8);
 }())
 
 window.addEventListener('keydown', ((evt) => {

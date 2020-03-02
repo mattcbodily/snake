@@ -1,7 +1,7 @@
 function Snake(){
     this.x = 0;
     this.y = 0;
-    this.xSpeed = 10;
+    this.xSpeed = 20;
     this.ySpeed = 0;
     this.total = 0;
     this.tail = [];
@@ -17,6 +17,12 @@ function Snake(){
     }
 
     this.move = function(){
+        for (let i = 0; i < this.tail.length - 1; i++) {
+            this.tail[i] = this.tail[i + 1];
+        }
+      
+        this.tail[this.total - 1] = { x: this.x, y: this.y };
+
         this.x += this.xSpeed;
         this.y += this.ySpeed;
 
@@ -60,8 +66,19 @@ function Snake(){
 
     this.eat = function(fruit){
         if(this.x === fruit.x && this.y === fruit.y){
+            this.total++;
             return true;
         }
         return false;
+    }
+
+    this.checkCollision = function(){
+        for (let i = 0; i < this.tail.length; i++) {
+            if (this.x === this.tail[i].x &&
+              this.y === this.tail[i].y) {
+              this.total = 0;
+              this.tail = [];
+            }
+        }
     }
 }
