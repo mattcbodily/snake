@@ -80,10 +80,13 @@ function Snake(){
         return false;
     }
 
-    this.checkCollision = function(interval){
+    this.checkCollision = function(interval, score){
         for (let i = 0; i < this.tail.length; i++) {
             if (this.x === this.tail[i].x &&
               this.y === this.tail[i].y) {
+              if(score > sessionStorage.getItem('highScore')){
+                  sessionStorage.setItem('highScore', score)
+              }
               this.total = 0;
               this.tail = [];
               clearInterval(interval)

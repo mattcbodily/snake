@@ -6,11 +6,12 @@ const scale = 20;
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 let snake;
+sessionStorage.setItem('highScore', 0)
 
 function setup(){
     snake = new Snake();
     fruit = new Fruit();
-    let score;
+    let highScore = sessionStorage.getItem('highScore');
     fruit.spawn(snake.tail)
 
     let gameTime = window.setInterval(() => {
@@ -18,14 +19,18 @@ function setup(){
         fruit.draw();
         snake.draw();
         snake.move();
-        score = snake.total;
-        document.getElementById('game-score').innerText = `Your score: ${score}`;
+        document.getElementById('game-score').innerText = `Your score: ${snake.total}`;
+
+        if(snake.total > highScore){
+            highScore = snake.total
+        }
+        document.getElementById('high-score').innerText = `High score: ${highScore}`;
 
         if(snake.eat(fruit)){
             fruit.spawn(snake.tail);
         }
 
-        snake.checkCollision(gameTime);
+        snake.checkCollision(gameTime, highScore);
       }, 1000 / 10);
 }
 
