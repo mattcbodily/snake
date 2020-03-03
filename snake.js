@@ -7,7 +7,7 @@ function Snake(){
     this.tail = [];
 
     this.draw = function(){
-        ctx.fillStyle = '#FFFFFF';
+        ctx.fillStyle = '#3F88C5';
         for (let i = 0; i < this.tail.length; i++) {
             ctx.fillRect(this.tail[i].x,
               this.tail[i].y, scale, scale);
@@ -92,6 +92,7 @@ function Snake(){
               clearInterval(interval)
               ctx.font = '30px Orbitron';
               ctx.textAlign = 'center';
+              ctx.fillStyle = '#FFFFFF';
               ctx.fillText('Game Over', 250, 50)
             }
         }
