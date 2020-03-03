@@ -1,6 +1,6 @@
 function Snake(){
-    this.x = 0;
-    this.y = 0;
+    this.x = 60;
+    this.y = 60;
     this.xSpeed = 20;
     this.ySpeed = 0;
     this.total = 0;
@@ -26,20 +26,20 @@ function Snake(){
         this.x += this.xSpeed;
         this.y += this.ySpeed;
 
-        if (this.x > canvas.width) {
+        if (this.x > canvas.width - scale) {
             this.x = 0;
           }
       
-        if (this.y > canvas.height) {
+        if (this.y > canvas.height - scale) {
             this.y = 0;
         }
       
         if (this.x < 0) {
-            this.x = canvas.width;
+            this.x = canvas.width - scale;
         }
       
         if (this.y < 0) {
-            this.y = canvas.height;
+            this.y = canvas.height - scale;
         }
     }
 
