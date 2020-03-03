@@ -87,10 +87,9 @@ function Snake(){
               this.total = 0;
               this.tail = [];
               clearInterval(interval)
-              ctx.clearRect(0, 0, canvas.width, canvas.height);
               ctx.font = '30px Orbitron';
               ctx.textAlign = 'center';
-              ctx.fillText('Game Over', 250, 250)
+              ctx.fillText('Game Over', 250, 50)
             }
         }
     }

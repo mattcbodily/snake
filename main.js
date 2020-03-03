@@ -11,7 +11,7 @@ function setup(){
     snake = new Snake();
     fruit = new Fruit();
     let score;
-    fruit.spawn()
+    fruit.spawn(snake.tail)
 
     let gameTime = window.setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -22,7 +22,7 @@ function setup(){
         document.getElementById('game-score').innerText = `Your score: ${score}`;
 
         if(snake.eat(fruit)){
-            fruit.spawn();
+            fruit.spawn(snake.tail);
         }
 
         snake.checkCollision(gameTime);
@@ -30,8 +30,10 @@ function setup(){
 }
 
 window.addEventListener('keydown', ((e) => {
-    const direction = e.key.replace('Arrow', '');
-    snake.changeDirection(direction);
+    if(e.keyCode !== 32){
+        const direction = e.key.replace('Arrow', '');
+        snake.changeDirection(direction);
+    }
 }));
 
 window.addEventListener('keydown', (e => {
