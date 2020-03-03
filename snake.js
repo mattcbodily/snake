@@ -46,20 +46,28 @@ function Snake(){
     this.changeDirection = function(direction){
         switch(direction){
             case 'Up':
-                this.xSpeed = 0;
-                this.ySpeed = -scale * 1;
+                if(this.ySpeed <= 0 || this.total === 0){
+                    this.xSpeed = 0;
+                    this.ySpeed = -scale * 1;
+                }
                 break;
             case 'Down':
-                this.xSpeed = 0;
-                this.ySpeed = scale * 1;
+                if(this.ySpeed >= 0 || this.total === 0){
+                    this.xSpeed = 0;
+                    this.ySpeed = scale * 1;
+                }
                 break;
             case 'Left':
-                this.xSpeed = -scale * 1;
-                this.ySpeed = 0;
+                if(this.xSpeed <= 0 || this.total === 0){
+                    this.xSpeed = -scale * 1;
+                    this.ySpeed = 0;
+                }
                 break;
             case 'Right':
-                this.xSpeed = scale * 1;
-                this.ySpeed = 0;
+                if(this.xSpeed >= 0 || this.total === 0){
+                    this.xSpeed = scale * 1;
+                    this.ySpeed = 0;
+                }
                 break;
         }
     }

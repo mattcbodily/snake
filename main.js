@@ -26,7 +26,7 @@ function setup(){
         }
 
         snake.checkCollision(gameTime);
-      }, 1000 / 8);
+      }, 1000 / 10);
 }
 
 window.addEventListener('keydown', ((e) => {
